@@ -9,4 +9,11 @@ $client = ClientBuilder::create()
     // ->addConnection('bolt', 'bolt://neo4j:password@localhost:7687') // Example for BOLT connection configuration (port is optional)
     ->build();
 
-    $client->run('CREATE (n:Person{name:"Muhammad"})');
+
+   	// require 'page_action.php';
+
+    $query = 'CREATE (A:ASSET {name: {name} }) RETURN A';
+	$parameters = ['name' => $ciName ];
+	$client->sendCypherQuery($query, $parameters);
+
+    // $client->run('CREATE (n:Person{name:"Muhammad"})');
